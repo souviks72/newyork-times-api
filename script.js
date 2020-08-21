@@ -70,7 +70,7 @@ async function getNews(topic){
         }catch(err){
             console.log(res.multimedia);
         }
-        
+        let months = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
 
         let row = document.createElement("div");
         row.classList.add("card","news-row");
@@ -85,7 +85,11 @@ async function getNews(topic){
 
         let dateCard = document.createElement("h6");
         dateCard.classList.add("dateCard","h6");
-        dateCard.innerText = published_date;
+        let dt = new Date(published_date);
+        let day = dt.getDate();
+        let month = months[dt.getMonth()];
+        let dateString = `${month} ${day}`;
+        dateCard.innerText = dateString;
 
         let abstractCard = document.createElement("p");
         abstractCard.classList.add("abstractCard","p");
